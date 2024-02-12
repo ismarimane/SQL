@@ -60,7 +60,7 @@ VALUES
 
 # Analysis:
 
-# Which companies are mother friendly, acceptable or insufficient based on how many weeks they provide for maternity leave?
+# Which companies are mother-friendly, acceptable, or insufficient based on how many weeks they provide for maternity leave?
 
 SELECT company_name, industry, CASE WHEN maternity_leave_weeks >= 12 THEN "mother friendly"
 WHEN maternity_leave_weeks >= 8 THEN "acceptable"
@@ -82,6 +82,7 @@ GROUP BY industry
 ORDER BY avg_maternity_leave_weeks desc;
 
 # Which industries, on average, provide at least 12 weeks of maternity leave?
+# This would return exclusively mother-friendly industries. I found that the technology, manufacturing, and financials industries, on average, provide at least 12 weeks of maternity leave.
 
 SELECT industry, ROUND(AVG(maternity_leave_weeks)) AS avg_maternity_leave_weeks
 FROM fortune_companies
@@ -89,7 +90,7 @@ GROUP BY industry
 HAVING avg_maternity_leave_weeks >= 12
 ORDER BY avg_maternity_leave_weeks desc;
 
-# Organize the companies within the technology and manufacturing industries based on how many weeks of maternity leave they provide.
+# Since the technology and manufacturing industries came out on top as the most mother-friendly, I organized the companies within these industries based on how many weeks of maternity leave they provide.
 
 SELECT company_name, industry, CASE WHEN maternity_leave_weeks >= 16 THEN "16 or more"
 WHEN maternity_leave_weeks >= 14 THEN "14 or more"
@@ -100,7 +101,8 @@ WHERE industry IN( "Technology", "Manufacturing")
 GROUP BY company_name
 ORDER BY maternity_leave_weeks_grouped desc;
 
-# Which companies whithin the technology industry provide at least 12 weeks of maternity leave and healthcare benefits?
+# Which companies within the technology industry provide at least 12 weeks of maternity leave and healthcare benefits?
+# When looking at mother-friendly industries, I added the condition of healthcare benefits as it would be essential, along with maternity leave weeks, for people considering having a child.
 
 SELECT company_name, maternity_leave_weeks
 FROM fortune_companies
