@@ -1,0 +1,36 @@
+/* I created this table about the movie stars and movies they have starred in.*/
+
+CREATE TABLE movie_stars (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, movie TEXT);
+
+INSERT INTO movie_stars(name, movie) VALUES ("Keira Knightly", "Pride & Prejudice");
+INSERT INTO movie_stars(name, movie) VALUES ("Matthew McFadyen", "Pride & Prejudice");
+INSERT INTO movie_stars(name, movie) VALUES ("Carey Mulligan", "Pride & Prejudice");
+INSERT INTO movie_stars(name, movie) VALUES ("Rosamund Pike", "Pride & Prejudice");
+SELECT id, name AS actor_actress, movie FROM movie_stars;
+
+/* I created this table with the same actorss from the first table, but added two new different movies that they have starred in.*/
+
+CREATE TABLE movie_stars_b (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, movie TEXT);
+
+INSERT INTO movie_stars_b(name, movie) VALUES ("Keira Knightly", "Anna Karenina");
+INSERT INTO movie_stars_b(name, movie) VALUES ("Matthew McFadyen", "Anna Karenina");
+INSERT INTO movie_stars_b(name, movie) VALUES ("Carey Mulligan", "Saltburn");
+INSERT INTO movie_stars_b(name, movie) VALUES ("Rosamund Pike", "Saltburn");
+SELECT name AS actor_actress, movie FROM movie_stars_b
+GROUP BY name;
+
+/* Here I am showing all of the actors and all of the movies they have starred in to show that some of them have acted in more than one movie together.*/
+
+SELECT a.name AS actor_actress, a.movie AS movie_list_a, b.movie AS movie_list_b
+FROM movie_stars AS a
+JOIN movie_stars_b AS b
+ON a.id=b.id
+GROUP BY actor_actress;
+
+/* Here I selected the actresses that had only starred in the movie Saltburn independent of any other movie they might have also starred in.*/
+
+SELECT a.name AS actor_actress, b.movie AS movie_list
+FROM movie_stars AS a
+JOIN movie_stars_b AS b
+ON a.id=b.id
+WHERE movie_list="Saltburn";
