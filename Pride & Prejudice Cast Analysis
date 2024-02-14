@@ -19,7 +19,29 @@ INSERT INTO pride_prejudice_cast(name, movie) VALUES ("Tamzin Merchant", "Pride 
 INSERT INTO pride_prejudice_cast(name, movie) VALUES ("Penelope Wilton", "Pride & Prejudice");
 SELECT id, name AS actor_actress, movie FROM pride_prejudice_cast;
 
-/* I created this table with the same actors from the first table but added two new movies that they have starred in.*/
+/* I created this table with the cast from Pride & Prejudice to show the title of the latest movie they appear in along with the year of the movie.*/
+
+CREATE TABLE recent_movies (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, movie TEXT, year INTEGER);
+
+INSERT INTO recent_movies(name, movie, year) VALUES ("Keira Knightly", "Boston Strangler", "2023");
+INSERT INTO recent_movies(name, movie, year) VALUES ("Matthew McFadyen", "Operation Mincemeat", "2021");
+INSERT INTO recent_movies(name, movie, year) VALUES ("Carey Mulligan", "Spaceman", "2024");
+INSERT INTO recent_movies(name, movie, year) VALUES ("Rosamund Pike", "Saltburn", "2023");
+INSERT INTO recent_movies(name, movie, year) VALUES ("Talulah Riley", "Father Christmas is Back", "2021");
+INSERT INTO recent_movies(name, movie, year) VALUES ("Donald Sutherland", "Miranda's Victim", "2023");
+INSERT INTO recent_movies(name, movie, year) VALUES ("Judi Dench", "Spirited", "2022");
+INSERT INTO recent_movies(name, movie, year) VALUES ("Tom Hollander", "The King's Man", "2021");
+INSERT INTO recent_movies(name, movie, year) VALUES ("Jena Malone", "Love Lies Bleeding", "2024");
+INSERT INTO recent_movies(name, movie, year) VALUES ("Brenda Blethyn", "Two Men in Town", "2014");
+INSERT INTO recent_movies(name, movie, year) VALUES ("Simon Woods", "Sunny et l'éléphant", "2008");
+INSERT INTO recent_movies(name, movie, year) VALUES ("Kelly Reilly", "A Haunting in Venice", "2023");
+INSERT INTO recent_movies(name, movie, year) VALUES ("Claudie Blakley", "The Nan Movie", "2022");
+INSERT INTO recent_movies(name, movie, year) VALUES ("Tamzin Merchant", "A Midsummer Night's Dream", "2022");
+INSERT INTO recent_movies(name, movie, year) VALUES ("Penelope Wilton", "The Unlikely Pilgrimage of Harold Fry", "2023");
+
+SELECT name AS actor_actress, movie, year FROM recent_movies;
+
+/* I created this table with the same actors from the first table but added two new different movies that they have starred in.*/
 
 CREATE TABLE movie_stars_b (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, movie TEXT);
 
