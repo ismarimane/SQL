@@ -41,7 +41,7 @@ INSERT INTO recent_movies(name, movie, year) VALUES ("Penelope Wilton", "The Unl
 
 SELECT name AS actor_actress, movie, year FROM recent_movies;
 
-/* I created this table with the same actors from the first table but added two new different movies that they have starred in.*/
+/* I created this table with some of the actors from the first table but added two new movies that they have starred in.*/
 
 CREATE TABLE movie_stars_b (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, movie TEXT);
 
@@ -52,7 +52,7 @@ INSERT INTO movie_stars_b(name, movie) VALUES ("Rosamund Pike", "Saltburn");
 SELECT name AS actor_actress, movie FROM movie_stars_b
 GROUP BY name;
 
-/* Here I am showing all of the actors and all of the movies they have starred in to show that some of them have acted in more than one movie together.*/
+/* Here I am showing some of the actors and some of the movies they have starred in to show that some of them have acted in more than one movie together.*/
 
 SELECT a.name AS actor_actress, a.movie AS movie_list_a, b.movie AS movie_list_b
 FROM pride_prejudice_cast AS a
